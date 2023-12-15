@@ -24,34 +24,17 @@ jobs:
       run: |
         dotnet new webapi -n HelloWorldApi
 
-    - name: Navigate to Project Directory and List Contents
+    - name: Update Program.cs for HelloWorld Endpoint
       run: |
         cd HelloWorldApi
-        echo "Listing contents of HelloWorldApi project directory:"
-        ls -al
-
-    - name: Modify Controller
-      run: |
-        cd HelloWorldApi
-        ls -al
-        cat HelloWorldApi.csproj
-        cat HelloWorldApi.http
-        cat Program.cs
-        cd Properties
-        ls -al
-    # - name: Modify Controller
-    #   run: |
-    #     echo '[ApiController]' > HelloWorldController.cs
-    #     echo '[Route("[controller]")]' >> HelloWorldController.cs
-    #     echo 'public class HelloWorldController : ControllerBase' >> HelloWorldController.cs
-    #     echo '{' >> HelloWorldController.cs
-    #     echo '  [HttpGet]' >> HelloWorldController.cs
-    #     echo '  public ActionResult<string> Get()' >> HelloWorldController.cs
-    #     echo '  {' >> HelloWorldController.cs
-    #     echo '      return "Hello World";' >> HelloWorldController.cs
-    #     echo '  }' >> HelloWorldController.cs
-    #     echo '}' >> HelloWorldController.cs
-    #     mv HelloWorldController.cs Controllers/
+        echo 'var builder = WebApplication.CreateBuilder(args);' > Program.cs
+        echo '' >> Program.cs
+        echo 'var app = builder.Build();' >> Program.cs
+        echo '' >> Program.cs
+        echo 'app.MapGet("/hello", () => "Hello World");' >> Program.cs
+        echo '' >> Program.cs
+        echo 'app.Run();' >> Program.cs
+        cd ..
 
     - name: Build Docker Image
       run: docker build -t hello-world-api .
