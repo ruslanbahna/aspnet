@@ -40,7 +40,7 @@ jobs:
         docker build -t hello-world-api -f Dockerfile .
 
     - name: Run Docker Container
-      run: docker run -d -p 8080:80 hello-world-api
+      run: docker run -d -p 8080:8080 hello-world-api
 
     - name: Test API
       run: |
