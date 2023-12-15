@@ -34,20 +34,22 @@ jobs:
       run: |
         cd HelloWorldApi
         ls -al
-
-    - name: Modify Controller
-      run: |
-        echo '[ApiController]' > HelloWorldController.cs
-        echo '[Route("[controller]")]' >> HelloWorldController.cs
-        echo 'public class HelloWorldController : ControllerBase' >> HelloWorldController.cs
-        echo '{' >> HelloWorldController.cs
-        echo '  [HttpGet]' >> HelloWorldController.cs
-        echo '  public ActionResult<string> Get()' >> HelloWorldController.cs
-        echo '  {' >> HelloWorldController.cs
-        echo '      return "Hello World";' >> HelloWorldController.cs
-        echo '  }' >> HelloWorldController.cs
-        echo '}' >> HelloWorldController.cs
-        mv HelloWorldController.cs Controllers/
+        cat HelloWorldApi.csproj
+        cat HelloWorldApi.http
+        cat Program.cs
+    # - name: Modify Controller
+    #   run: |
+    #     echo '[ApiController]' > HelloWorldController.cs
+    #     echo '[Route("[controller]")]' >> HelloWorldController.cs
+    #     echo 'public class HelloWorldController : ControllerBase' >> HelloWorldController.cs
+    #     echo '{' >> HelloWorldController.cs
+    #     echo '  [HttpGet]' >> HelloWorldController.cs
+    #     echo '  public ActionResult<string> Get()' >> HelloWorldController.cs
+    #     echo '  {' >> HelloWorldController.cs
+    #     echo '      return "Hello World";' >> HelloWorldController.cs
+    #     echo '  }' >> HelloWorldController.cs
+    #     echo '}' >> HelloWorldController.cs
+    #     mv HelloWorldController.cs Controllers/
 
     - name: Build Docker Image
       run: docker build -t hello-world-api .
