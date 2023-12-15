@@ -24,6 +24,10 @@ jobs:
       run: |
         dotnet new webapi -n HelloWorldApi
         cd HelloWorldApi
+    - name: List Directory Contents
+      run: |
+        echo "Listing contents of HelloWorldApi directory:"
+        ls -al
 
     - name: Modify Controller
       run: |
