@@ -33,6 +33,7 @@ jobs:
     - name: Modify Controller
       run: |
         cd HelloWorldApi
+        ls -al
 
     - name: Modify Controller
       run: |
