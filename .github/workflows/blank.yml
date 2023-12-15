@@ -1,0 +1,53 @@
+# This is a basic workflow to help you get started with Actions
+
+name: .NET Project Automation
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Create .NET Web API Project
+      run: |
+        dotnet new webapi -n HelloWorldApi
+        cd HelloWorldApi
+
+    - name: Modify Controller
+      run: |
+        echo '[ApiController]' > HelloWorldController.cs
+        echo '[Route("[controller]")]' >> HelloWorldController.cs
+        echo 'public class HelloWorldController : ControllerBase' >> HelloWorldController.cs
+        echo '{' >> HelloWorldController.cs
+        echo '  [HttpGet]' >> HelloWorldController.cs
+        echo '  public ActionResult<string> Get()' >> HelloWorldController.cs
+        echo '  {' >> HelloWorldController.cs
+        echo '      return "Hello World";' >> HelloWorldController.cs
+        echo '  }' >> HelloWorldController.cs
+        echo '}' >> HelloWorldController.cs
+        mv HelloWorldController.cs Controllers/
+
+    - name: Build Docker Image
+      run: docker build -t hello-world-api .
+
+    - name: Run Docker Container
+      run: docker run -d -p 8080:80 hello-world-api
+
+    - name: Test API
+      run: |
+        sleep 10
+        curl http://localhost:8080/HelloWorld
+          echo Add other actions to build,
+          echo test, and deploy your project.
