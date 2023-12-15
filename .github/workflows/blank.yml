@@ -18,15 +18,19 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '6.0.x'
+        dotnet-version: '8.0.x'
 
     - name: Create .NET Web API Project
       run: |
         dotnet new webapi -n HelloWorldApi
-        cd HelloWorldApi
-    - name: List Directory Contents
+
+    - name: Navigate to Project Directory
       run: |
-        echo "Listing contents of HelloWorldApi directory:"
+        cd HelloWorldApi
+
+    - name: List Project Directory Contents
+      run: |
+        echo "Listing contents of HelloWorldApi project directory:"
         ls -al
 
     - name: Modify Controller
