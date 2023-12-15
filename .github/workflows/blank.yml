@@ -22,14 +22,19 @@ jobs:
       run: |
         dotnet new webapi -n HelloWorldApi
 
-    - name: Update Program.cs for HelloWorld Endpoint
+    - name: Update Program.cs for ASP.NET ASCII Art Endpoint
       run: |
         cd HelloWorldApi
         echo 'var builder = WebApplication.CreateBuilder(args);' > Program.cs
-        echo '' >> Program.cs
         echo 'var app = builder.Build();' >> Program.cs
         echo '' >> Program.cs
-        echo 'app.MapGet("/hello", () => "Hello World!!! ");' >> Program.cs
+        echo 'app.MapGet(\"/hello\", () => @" >> Program.cs
+        echo '    AAAAA  SSSSS  PPPPPP     N   N  EEEEE  TTTTT' >> Program.cs
+        echo '    A   A  S      P   P      NN  N  E        T' >> Program.cs
+        echo '    AAAAA  SSSSS  PPPPP      N N N  EEEE     T' >> Program.cs
+        echo '    A   A      S  P          N  NN  E        T' >> Program.cs
+        echo '    A   A  SSSSS  P       .  N   N  EEEEE    T' >> Program.cs
+        echo '");' >> Program.cs
         echo '' >> Program.cs
         echo 'app.Run();' >> Program.cs
         cd ..
