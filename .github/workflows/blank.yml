@@ -45,6 +45,5 @@ jobs:
     - name: Test API
       run: |
         sleep 20
-        curl http://localhost:8080/HelloWorld
-          echo Add other actions to build,
-          echo test, and deploy your project.
+        curl http://localhost:8080/hello
+        echo "Add other actions to build, test, and deploy your project."
