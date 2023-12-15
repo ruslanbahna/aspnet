@@ -37,6 +37,8 @@ jobs:
         cat HelloWorldApi.csproj
         cat HelloWorldApi.http
         cat Program.cs
+        cd Properties
+        ls -al
     # - name: Modify Controller
     #   run: |
     #     echo '[ApiController]' > HelloWorldController.cs
