@@ -15,4 +15,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0-jammy-chiseled AS final
 EXPOSE 8080
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "HelloWorldApi.dll"]
+ENTRYPOINT ["./dotnet"]
