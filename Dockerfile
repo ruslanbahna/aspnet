@@ -1,9 +1,9 @@
 # Use the .NET SDK image to build the application
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["HelloWorldApi.csproj", "./"]
+COPY ["HelloWorldApi/HelloWorldApi.csproj", "./"]
 RUN dotnet restore "HelloWorldApi.csproj"
-COPY . .
+COPY ["HelloWorldApi/.", "."]
 RUN dotnet build "HelloWorldApi.csproj" -c Release -o /app/build
 
 # Publish the application
