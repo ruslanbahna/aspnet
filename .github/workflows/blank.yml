@@ -24,14 +24,15 @@ jobs:
       run: |
         dotnet new webapi -n HelloWorldApi
 
-    - name: Navigate to Project Directory
+    - name: Navigate to Project Directory and List Contents
       run: |
         cd HelloWorldApi
-
-    - name: List Project Directory Contents
-      run: |
         echo "Listing contents of HelloWorldApi project directory:"
         ls -al
+
+    - name: Modify Controller
+      run: |
+        cd HelloWorldApi
 
     - name: Modify Controller
       run: |
