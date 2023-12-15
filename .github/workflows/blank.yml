@@ -44,7 +44,7 @@ jobs:
 
     - name: Test API
       run: |
-        sleep 10
+        sleep 20
         curl http://localhost:8080/HelloWorld
           echo Add other actions to build,
           echo test, and deploy your project.

@@ -12,6 +12,7 @@ RUN dotnet publish "HelloWorldApi.csproj" -c Release -o /app/publish
 
 # Use the .NET runtime image to run the application
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-jammy-chiseled AS final
+EXPOSE 8080
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "HelloWorldApi.dll"]
