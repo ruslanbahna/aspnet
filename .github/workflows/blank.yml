@@ -22,22 +22,22 @@ jobs:
       run: |
         dotnet new webapi -n HelloWorldApi
 
-    - name: Update Program.cs for ASP.NET ASCII Art Endpoint
-      run: |
-        cd HelloWorldApi
-        echo 'var builder = WebApplication.CreateBuilder(args);' > Program.cs
-        echo 'var app = builder.Build();' >> Program.cs
-        echo '' >> Program.cs
-        echo 'app.MapGet("/hello", () => @"' >> Program.cs
-        echo '    AAAAA  SSSSS  PPPPPP     N   N  EEEEE  TTTTT' >> Program.cs
-        echo '    A   A  S      P   P      NN  N  E        T' >> Program.cs
-        echo '    AAAAA  SSSSS  PPPPP      N N N  EEEE     T' >> Program.cs
-        echo '    A   A      S  P          N  NN  E        T' >> Program.cs
-        echo '    A   A  SSSSS  P          N   N  EEEEE    T' >> Program.cs
-        echo '");' >> Program.cs
-        echo '' >> Program.cs
-        echo 'app.Run();' >> Program.cs
-        cd ..
+    - name: Update Program.cs for Larger ASP.NET ASCII Art Endpoint
+  run: |
+    cd HelloWorldApi
+    echo 'var builder = WebApplication.CreateBuilder(args);' > Program.cs
+    echo 'var app = builder.Build();' >> Program.cs
+    echo '' >> Program.cs
+    echo 'app.MapGet("/hello", () => @"' >> Program.cs
+    echo '     AAAAA     SSSSSSS    PPPPPPP       NNN   NN   EEEEEEEE  TTTTTTTTTT' >> Program.cs
+    echo '    AA   AA    SS         PP   PP       NNNN  NN   EE            TT' >> Program.cs
+    echo '   AAAAAAAAA   SSSSSSS    PPPPPPP       NN NN NN   EEEEEEEE      TT' >> Program.cs
+    echo '  AA       AA       SS    PP            NN  NNNN   EE            TT' >> Program.cs
+    echo ' AA         AA SSSSSSS    PP       D    NN   NNN   EEEEEEEE      TT' >> Program.cs
+    echo ' ");' >> Program.cs
+    echo '' >> Program.cs
+    echo 'app.Run();' >> Program.cs
+    cd ..
 
     - name: Build Docker Image
       run: |
