@@ -29,7 +29,7 @@ jobs:
         echo '' >> Program.cs
         echo 'var app = builder.Build();' >> Program.cs
         echo '' >> Program.cs
-        echo 'app.MapGet("/hello", () => "Hello World");' >> Program.cs
+        echo 'app.MapGet("/hello", () => "Hello World!!! ");' >> Program.cs
         echo '' >> Program.cs
         echo 'app.Run();' >> Program.cs
         cd ..
